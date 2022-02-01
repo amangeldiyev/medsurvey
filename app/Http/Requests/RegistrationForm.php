@@ -26,7 +26,7 @@ class RegistrationForm extends FormRequest
     {
         return [
             'name' => 'required|string|max:50',
-            'email' => 'required|email|unique:users,email|max:150',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|between:8,50|confirmed',
             'device_name' => 'required'
         ];
