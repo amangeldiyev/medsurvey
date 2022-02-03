@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Option;
+use App\Models\Survey;
+use Illuminate\Http\Request;
+
+class SurveyController extends Controller
+{
+    public function start()
+    {
+        $survey = Survey::first();
+
+        $question = $survey->questions()
+            ->orderBy('order')
+            ->with('options')
+            ->first();
+
+        return response()->json([
+            'success' => true,
+            'question' => $question
+        ]);
+    }
+
+    public function storeUserResponse(Request $request, Option $option)
+    {
+        $request->validate([
+            'value' => 'nullable|string|max:250'
+        ]);
+
+        $request->user()->responses()->syncWithPivotValues(
+            $option->id,
+            ['value' => $request->value],
+            false
+        );
+
+        $nextQuestion = $option->subQuestion ?? $option->question->next();
+
+        return response()->json([
+            'success' => true,
+            'nextQuestion' => $nextQuestion
+        ]);
+    }
+}

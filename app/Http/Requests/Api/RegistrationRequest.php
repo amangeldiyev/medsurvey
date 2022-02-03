@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 
-class RegistrationForm extends FormRequest
+class RegistrationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class RegistrationForm extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:50',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|between:8,50|confirmed',
             'device_name' => 'required'

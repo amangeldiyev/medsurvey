@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +16,6 @@ class RegistrationTest extends TestCase
         $user = User::factory()->make();
 
         $response = $this->post('/api/register', [
-            'name' => $user->name,
             'email' => $user->email,
             'password' => 'password',
             'password_confirmation' => 'password',

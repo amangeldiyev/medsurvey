@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\PasswordResetController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\SurveyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +28,11 @@ Route::group(['middleware' => 'auth:sanctum'], function ($route) {
         return request()->user();
     });
 
+    $route->post('/profile', [ProfileController::class, 'store']);
+
+    $route->get('/survey/start', [SurveyController::class, 'start']);
+
+    $route->post('/survey/response/{option}', [SurveyController::class, 'storeUserResponse']);
+    
     $route->post('/logout', [LogoutController::class, 'logout']);
 });

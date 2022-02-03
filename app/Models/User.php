@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nationality',
+        'dob',
+        'gender'
     ];
 
     /**
@@ -41,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get user's responses to survey questions
+     */
+    public function responses()
+    {
+        return $this->belongsToMany(Option::class, 'user_responses', 'user_id', 'option_id');
+    }
 }

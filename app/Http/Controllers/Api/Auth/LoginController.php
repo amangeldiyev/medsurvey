@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginForm;
+use App\Http\Requests\Api\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function login(LoginForm $request)
+    public function login(LoginRequest $request)
     {
         $validated = $request->validated();
     
@@ -21,7 +21,11 @@ class LoginController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-    
-        return $user->createToken($validated['device_name'])->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+            'token' => $user->createToken($validated['device_name'])->plainTextToken
+        ]);
     }
 }

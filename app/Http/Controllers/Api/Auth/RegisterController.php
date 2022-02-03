@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegistrationForm;
+use App\Http\Requests\Api\RegistrationRequest;
 use App\Models\User;
 
 class RegisterController extends Controller
 {
-    public function register(RegistrationForm $request)
+    public function register(RegistrationRequest $request)
     {
-        $validatedData = $request->validated();
+        $validated = $request->validated();
 
-        $user = User::create($validatedData);
+        $user = User::create($validated);
 
-        return $user->createToken($validatedData['device_name'])->plainTextToken;
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+            'token' => $user->createToken($validated['device_name'])->plainTextToken
+        ]);
     }
 }

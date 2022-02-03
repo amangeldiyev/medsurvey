@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginForm extends FormRequest
+class ProfileStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class LoginForm extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required',
-            'device_name' => 'required',
+            'name' => 'required|string|max:50',
+            'nationality' => 'required|string|max:50',
+            'dob' => 'required|date',
+            'gender' => 'required|between:0,1'
         ];
     }
 }
