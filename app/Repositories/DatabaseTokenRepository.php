@@ -71,7 +71,7 @@ class DatabaseTokenRepository extends BaseDatabaseTokenRepository
 
     protected function validate($token, $record)
     {
-        if ($this->hasher->check($token, $record['token']) || $token === $record['code']) {
+        if ($this->hasher->check($token, $record['token']) || strtoupper($token) === $record['code']) {
             return true;
         }
 
