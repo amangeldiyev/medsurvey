@@ -25,10 +25,6 @@ Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'
 Route::post('/reset-password', [PasswordResetController::class, 'store']);
 
 Route::group(['middleware' => 'auth:sanctum'], function ($route) {
-    $route->get('/user', function () {
-        return request()->user();
-    });
-
     $route->post('/profile', [ProfileController::class, 'store']);
 
     $route->get('/survey/start', [SurveyController::class, 'start']);

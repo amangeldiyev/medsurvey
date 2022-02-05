@@ -67,7 +67,7 @@ class PasswordResetController extends Controller
         );
 
         return response()->json([
-            'succes' => ($status == Password::PASSWORD_RESET),
+            'success' => ($status == Password::PASSWORD_RESET),
             'status' => __($status)
         ]);
     }
