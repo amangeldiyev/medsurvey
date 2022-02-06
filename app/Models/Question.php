@@ -19,6 +19,11 @@ class Question extends Model
         return $this->hasMany(Option::class);
     }
 
+    /**
+     * Get next question of survey based on order
+     *
+     * @return Question
+     */
     public function next()
     {
         return self::where('survey_id', $this->survey_id)

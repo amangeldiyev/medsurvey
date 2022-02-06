@@ -17,6 +17,11 @@ class Option extends Model
         return $this->belongsTo(Question::class);
     }
 
+    /**
+     * Get question which depends on this option
+     *
+     * @return \App\Models\Question
+     */
     public function subQuestion()
     {
         return $this->hasOne(Question::class, 'option_id');
