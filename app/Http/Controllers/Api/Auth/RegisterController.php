@@ -8,6 +8,12 @@ use App\Models\User;
 
 class RegisterController extends Controller
 {
+    /**
+     * Handle an incoming registration request
+     *
+     * @param RegistrationRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function register(RegistrationRequest $request)
     {
         $validated = $request->validated();

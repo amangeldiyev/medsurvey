@@ -10,7 +10,7 @@ test('store user profile data', function () {
 
     $token = $user->createToken('phone')->plainTextToken;
 
-    $response = $this->post('/api/profile', [
+    $response = $this->put('/api/profile', [
         'name' => $name = $this->faker->name(),
         'nationality' => $nationality = $this->faker->word(),
         'dob' => $dob = $this->faker->date(),

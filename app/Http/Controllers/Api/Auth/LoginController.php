@@ -10,6 +10,14 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    /**
+     * Handle an incoming login request
+     *
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(LoginRequest $request)
     {
         $validated = $request->validated();

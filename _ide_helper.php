@@ -12764,6 +12764,47 @@
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->macroCall($method, $parameters);
         }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::auth()
+         * @param mixed $options
+         * @static 
+         */ 
+        public static function auth($options = [])
+        {
+                        return \Illuminate\Routing\Router::auth($options);
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
+         * @static 
+         */ 
+        public static function resetPassword()
+        {
+                        return \Illuminate\Routing\Router::resetPassword();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
+         * @static 
+         */ 
+        public static function confirmPassword()
+        {
+                        return \Illuminate\Routing\Router::confirmPassword();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
+         * @static 
+         */ 
+        public static function emailVerification()
+        {
+                        return \Illuminate\Routing\Router::emailVerification();
+        }
          
     }
             /**
@@ -16047,10 +16088,137 @@
         class Str {
          
     }
+            /**
+     * 
+     *
+     */ 
+        class Collection {
+                    /**
+         * 
+         *
+         * @see \TCG\Voyager\VoyagerServiceProvider::bootTranslatorCollectionMacros()
+         * @static 
+         */ 
+        public static function translate()
+        {
+                        return \Illuminate\Support\Collection::translate();
+        }
+         
+    }
      
 }
 
-        namespace Facade\Ignition\Facades { 
+        namespace Arrilot\Widgets { 
+            /**
+     * 
+     *
+     */ 
+        class Facade {
+                    /**
+         * Run widget without magic method.
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function run()
+        {
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->run();
+        }
+                    /**
+         * Encrypt widget params to be transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function encryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->encryptWidgetParams($params);
+        }
+                    /**
+         * Decrypt widget params that were transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function decryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->decryptWidgetParams($params);
+        }
+                    /**
+         * Get current widget name with optional custom widget namespace.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getWidgetNameWithCustomNamespace()
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->getWidgetNameWithCustomNamespace();
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class AsyncFacade {
+                    /**
+         * Run widget without magic method.
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function run()
+        {
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->run();
+        }
+                    /**
+         * Encrypt widget params to be transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function encryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->encryptWidgetParams($params);
+        }
+                    /**
+         * Decrypt widget params that were transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function decryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->decryptWidgetParams($params);
+        }
+                    /**
+         * Get current widget name with optional custom widget namespace.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getWidgetNameWithCustomNamespace()
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->getWidgetNameWithCustomNamespace();
+        }
+         
+    }
+     
+}
+
+    namespace Facade\Ignition\Facades { 
             /**
      * Class Flare.
      *
@@ -16342,6 +16510,307 @@
      
 }
 
+    namespace Intervention\Image\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Image {
+                    /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @return self 
+         * @static 
+         */ 
+        public static function configure($config = [])
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->configure($config);
+        }
+                    /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->make($data);
+        }
+                    /**
+         * Creates an empty image canvas
+         *
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->canvas($width, $height, $background);
+        }
+                    /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+     
+}
+
+    namespace TCG\Voyager\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Voyager {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function model($name)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->model($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function modelClass($name)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->modelClass($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function useModel($name, $object)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->useModel($name, $object);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function view($name, $parameters = [])
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->view($name, $parameters);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function onLoadingView($name, $closure)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->onLoadingView($name, $closure);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function formField($row, $dataType, $dataTypeContent)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->formField($row, $dataType, $dataTypeContent);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function afterFormFields($row, $dataType, $dataTypeContent)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->afterFormFields($row, $dataType, $dataTypeContent);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addFormField($handler)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->addFormField($handler);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addAfterFormField($handler)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->addAfterFormField($handler);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function formFields()
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->formFields();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addAction($action)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->addAction($action);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function replaceAction($actionToReplace, $action)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->replaceAction($actionToReplace, $action);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function actions()
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->actions();
+        }
+                    /**
+         * Get a collection of dashboard widgets.
+         * 
+         * Each of our widget groups contain a max of three widgets.
+         * After that, we will switch to a new widget group.
+         *
+         * @return array - Array consisting of \Arrilot\Widget\WidgetGroup objects
+         * @static 
+         */ 
+        public static function dimmers()
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->dimmers();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setting($key, $default = null)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->setting($key, $default);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function image($file, $default = '')
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->image($file, $default);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function routes()
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->routes();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getVersion()
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->getVersion();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addAlert($alert)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->addAlert($alert);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function alerts()
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->alerts();
+        }
+                    /**
+         * 
+         *
+         * @param string|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection $model
+         * @return bool 
+         * @static 
+         */ 
+        public static function translatable($model)
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->translatable($model);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getLocales()
+        {
+                        /** @var \TCG\Voyager\Voyager $instance */
+                        return $instance->getLocales();
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -16393,6 +16862,59 @@
         public static function hasValidRelativeSignature()
         {
                         return \Illuminate\Http\Request::hasValidRelativeSignature();
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Routing\RouteRegistrar
+     */ 
+        class Router {
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::auth()
+         * @param mixed $options
+         * @static 
+         */ 
+        public static function auth($options = [])
+        {
+                        return \Illuminate\Routing\Router::auth($options);
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
+         * @static 
+         */ 
+        public static function resetPassword()
+        {
+                        return \Illuminate\Routing\Router::resetPassword();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
+         * @static 
+         */ 
+        public static function confirmPassword()
+        {
+                        return \Illuminate\Routing\Router::confirmPassword();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
+         * @static 
+         */ 
+        public static function emailVerification()
+        {
+                        return \Illuminate\Routing\Router::emailVerification();
         }
          
     }
@@ -19877,7 +20399,11 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
+            class Widget extends \Arrilot\Widgets\Facade {}
+            class AsyncWidget extends \Arrilot\Widgets\AsyncFacade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
+            class Image extends \Intervention\Image\Facades\Image {}
+            class Voyager extends \TCG\Voyager\Facades\Voyager {}
      
 }
 

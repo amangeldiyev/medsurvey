@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class SurveyController extends Controller
 {
+    /**
+     * Return first queston from survey
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function start()
     {
         $survey = Survey::first();
@@ -24,6 +29,13 @@ class SurveyController extends Controller
         ]);
     }
 
+    /**
+     * Save user's response to question and return next question
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param Option $option
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function storeUserResponse(Request $request, Option $option)
     {
         $request->validate([
@@ -40,7 +52,7 @@ class SurveyController extends Controller
 
         return response()->json([
             'success' => true,
-            'nextQuestion' => $nextQuestion
+            'question' => $nextQuestion->load('options')
         ]);
     }
 }
