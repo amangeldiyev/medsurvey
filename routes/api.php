@@ -25,10 +25,10 @@ Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'
 Route::post('/reset-password', [PasswordResetController::class, 'store']);
 
 Route::group(['middleware' => 'auth:sanctum'], function ($route) {
-    $route->put('/profile', [ProfileController::class, 'store']);
+    $route->get('/user', [ProfileController::class, 'show']);
+    $route->put('/user', [ProfileController::class, 'store']);
 
     $route->get('/survey/start', [SurveyController::class, 'start']);
-
     $route->post('/survey/response/{option}', [SurveyController::class, 'storeUserResponse']);
     
     $route->post('/logout', [LogoutController::class, 'logout']);
