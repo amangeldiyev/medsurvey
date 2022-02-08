@@ -8,7 +8,7 @@ endpoints:
       - POST
     uri: api/login
     metadata:
-      title: 'Handle an incoming authentication request.'
+      title: 'Handle an incoming login request'
       description: ''
       authenticated: false
       custom: []
@@ -22,21 +22,21 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: romaguera.rebekah@example.org
+        example: rblick@example.net
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: praesentium
+        example: ea
         type: string
         custom: []
       device_name:
         name: device_name
         description: ''
         required: true
-        example: labore
+        example: harum
         type: string
         custom: []
     responses: []
@@ -46,7 +46,7 @@ endpoints:
       - POST
     uri: api/register
     metadata:
-      title: ''
+      title: 'Handle an incoming registration request'
       description: ''
       authenticated: false
       custom: []
@@ -56,32 +56,25 @@ endpoints:
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: blxwknqvalyvrdt
-        type: string
-        custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: dwight78@example.org
+        example: dmitchell@example.com
         type: string
         custom: []
       password:
         name: password
         description: 'Must be between 8 and 50 characters.'
         required: true
-        example: epkxxopugncnahigjpychhtwnj
+        example: llgrkthzdxrdnpulbbtqrnjv
         type: string
         custom: []
       device_name:
         name: device_name
         description: ''
         required: true
-        example: et
+        example: eaque
         type: string
         custom: []
     responses: []
@@ -98,21 +91,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the post.'
-        required: true
-        example: 9
-        type: integer
-        custom: []
-      lang:
-        name: lang
-        description: 'The language.'
-        required: false
-        example: en
-        type: string
-        custom: []
+    urlParameters: []
     queryParameters: []
     bodyParameters: []
     responses: []
@@ -122,7 +101,7 @@ endpoints:
       - GET
     uri: api/user
     metadata:
-      title: ''
+      title: 'Return user data'
       description: ''
       authenticated: false
       custom: []
@@ -147,7 +126,7 @@ endpoints:
       - POST
     uri: api/logout
     metadata:
-      title: ''
+      title: 'Handle an incoming logout request'
       description: ''
       authenticated: false
       custom: []
@@ -161,10 +140,93 @@ endpoints:
     responseFields: []
   -
     httpMethods:
-      - GET
-    uri: api/test
+      - POST
+    uri: api/reset-password
     metadata:
-      title: ''
+      title: 'Handle an incoming new password request.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      code:
+        name: code
+        description: ''
+        required: true
+        example: suscipit
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: frank07@example.org
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: dolore
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: api/user
+    metadata:
+      title: 'Update user profile data'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: ygagqehouat
+        type: string
+        custom: []
+      nationality:
+        name: nationality
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: lerpmjsiow
+        type: string
+        custom: []
+      dob:
+        name: dob
+        description: 'Must be a valid date.'
+        required: true
+        example: '2022-02-07T16:33:13'
+        type: string
+        custom: []
+      gender:
+        name: gender
+        description: 'Must be between 0 and 1 characters.'
+        required: true
+        example: ''
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/survey/start
+    metadata:
+      title: 'Return first queston from survey'
       description: ''
       authenticated: false
       custom: []
@@ -176,13 +238,35 @@ endpoints:
     bodyParameters: []
     responses:
       -
-        status: 200
-        content: '{"success":true}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
           access-control-allow-origin: '*'
         description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/survey/response/{option}'
+    metadata:
+      title: 'Save user''s response to question and return next question'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      option:
+        name: option
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
     responseFields: []

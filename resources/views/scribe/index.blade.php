@@ -75,22 +75,31 @@
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
-                        <a href="#endpoints-POSTapi-login">Handle an incoming authentication request.</a>
+                        <a href="#endpoints-POSTapi-login">Handle an incoming login request</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-register">
-                        <a href="#endpoints-POSTapi-register">POST api/register</a>
+                        <a href="#endpoints-POSTapi-register">Handle an incoming registration request</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-forgot-password">
                         <a href="#endpoints-POSTapi-forgot-password">Handle an incoming password reset link request.</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
-                        <a href="#endpoints-GETapi-user">GET api/user</a>
+                        <a href="#endpoints-GETapi-user">Return user data</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
-                        <a href="#endpoints-POSTapi-logout">POST api/logout</a>
+                        <a href="#endpoints-POSTapi-logout">Handle an incoming logout request</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-test">
-                        <a href="#endpoints-GETapi-test">GET api/test</a>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-reset-password">
+                        <a href="#endpoints-POSTapi-reset-password">Handle an incoming new password request.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-PUTapi-user">
+                        <a href="#endpoints-PUTapi-user">Update user profile data</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-survey-start">
+                        <a href="#endpoints-GETapi-survey-start">Return first queston from survey</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-survey-response--option-">
+                        <a href="#endpoints-POSTapi-survey-response--option-">Save user&#039;s response to question and return next question</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -104,7 +113,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: February 1 2022</li>
+        <li>Last updated: February 7 2022</li>
     </ul>
 </div>
 
@@ -127,7 +136,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
     
 
-            <h2 id="endpoints-POSTapi-login">Handle an incoming authentication request.</h2>
+            <h2 id="endpoints-POSTapi-login">Handle an incoming login request</h2>
 
 <p>
 </p>
@@ -144,9 +153,9 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"romaguera.rebekah@example.org\",
-    \"password\": \"praesentium\",
-    \"device_name\": \"labore\"
+    \"email\": \"rblick@example.net\",
+    \"password\": \"ea\",
+    \"device_name\": \"harum\"
 }"
 </code></pre></div>
 
@@ -162,9 +171,9 @@ const headers = {
 };
 
 let body = {
-    "email": "romaguera.rebekah@example.org",
-    "password": "praesentium",
-    "device_name": "labore"
+    "email": "rblick@example.net",
+    "password": "ea",
+    "device_name": "harum"
 };
 
 fetch(url, {
@@ -222,7 +231,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-login"
-               value="romaguera.rebekah@example.org"
+               value="rblick@example.net"
                data-component="body" hidden>
     <br>
 <p>Must be a valid email address.</p>
@@ -232,7 +241,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-login"
-               value="praesentium"
+               value="ea"
                data-component="body" hidden>
     <br>
 
@@ -242,14 +251,14 @@ fetch(url, {
                 <input type="text"
                name="device_name"
                data-endpoint="POSTapi-login"
-               value="labore"
+               value="harum"
                data-component="body" hidden>
     <br>
 
         </p>
         </form>
 
-            <h2 id="endpoints-POSTapi-register">POST api/register</h2>
+            <h2 id="endpoints-POSTapi-register">Handle an incoming registration request</h2>
 
 <p>
 </p>
@@ -266,10 +275,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"blxwknqvalyvrdt\",
-    \"email\": \"dwight78@example.org\",
-    \"password\": \"epkxxopugncnahigjpychhtwnj\",
-    \"device_name\": \"et\"
+    \"email\": \"dmitchell@example.com\",
+    \"password\": \"llgrkthzdxrdnpulbbtqrnjv\",
+    \"device_name\": \"eaque\"
 }"
 </code></pre></div>
 
@@ -285,10 +293,9 @@ const headers = {
 };
 
 let body = {
-    "name": "blxwknqvalyvrdt",
-    "email": "dwight78@example.org",
-    "password": "epkxxopugncnahigjpychhtwnj",
-    "device_name": "et"
+    "email": "dmitchell@example.com",
+    "password": "llgrkthzdxrdnpulbbtqrnjv",
+    "device_name": "eaque"
 };
 
 fetch(url, {
@@ -342,21 +349,11 @@ fetch(url, {
         </p>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
-            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="name"
-               data-endpoint="POSTapi-register"
-               value="blxwknqvalyvrdt"
-               data-component="body" hidden>
-    <br>
-<p>Must not be greater than 50 characters.</p>
-        </p>
-                <p>
             <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-register"
-               value="dwight78@example.org"
+               value="dmitchell@example.com"
                data-component="body" hidden>
     <br>
 <p>Must be a valid email address.</p>
@@ -366,7 +363,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-register"
-               value="epkxxopugncnahigjpychhtwnj"
+               value="llgrkthzdxrdnpulbbtqrnjv"
                data-component="body" hidden>
     <br>
 <p>Must be between 8 and 50 characters.</p>
@@ -376,7 +373,7 @@ fetch(url, {
                 <input type="text"
                name="device_name"
                data-endpoint="POSTapi-register"
-               value="et"
+               value="eaque"
                data-component="body" hidden>
     <br>
 
@@ -459,30 +456,9 @@ fetch(url, {
             <small class="badge badge-black">POST</small>
             <b><code>api/forgot-password</code></b>
         </p>
-                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="id"
-               data-endpoint="POSTapi-forgot-password"
-               value="9"
-               data-component="url" hidden>
-    <br>
-<p>The ID of the post.</p>
-            </p>
-                    <p>
-                <b><code>lang</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
-                <input type="text"
-               name="lang"
-               data-endpoint="POSTapi-forgot-password"
-               value="en"
-               data-component="url" hidden>
-    <br>
-<p>The language.</p>
-            </p>
                     </form>
 
-            <h2 id="endpoints-GETapi-user">GET api/user</h2>
+            <h2 id="endpoints-GETapi-user">Return user data</h2>
 
 <p>
 </p>
@@ -577,7 +553,7 @@ access-control-allow-origin: *
         </p>
                     </form>
 
-            <h2 id="endpoints-POSTapi-logout">POST api/logout</h2>
+            <h2 id="endpoints-POSTapi-logout">Handle an incoming logout request</h2>
 
 <p>
 </p>
@@ -655,27 +631,283 @@ fetch(url, {
         </p>
                     </form>
 
-            <h2 id="endpoints-GETapi-test">GET api/test</h2>
+            <h2 id="endpoints-POSTapi-reset-password">Handle an incoming new password request.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-test">
+<span id="example-requests-POSTapi-reset-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/reset-password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"code\": \"suscipit\",
+    \"email\": \"frank07@example.org\",
+    \"password\": \"dolore\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/reset-password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "code": "suscipit",
+    "email": "frank07@example.org",
+    "password": "dolore"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-reset-password">
+</span>
+<span id="execution-results-POSTapi-reset-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-reset-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-reset-password"></code></pre>
+</span>
+<span id="execution-error-POSTapi-reset-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-reset-password"></code></pre>
+</span>
+<form id="form-POSTapi-reset-password" data-method="POST"
+      data-path="api/reset-password"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-reset-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-reset-password"
+                    onclick="tryItOut('POSTapi-reset-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-reset-password"
+                    onclick="cancelTryOut('POSTapi-reset-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-reset-password" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/reset-password</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>code</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="code"
+               data-endpoint="POSTapi-reset-password"
+               value="suscipit"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-reset-password"
+               value="frank07@example.org"
+               data-component="body" hidden>
+    <br>
+<p>Must be a valid email address.</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-reset-password"
+               value="dolore"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+            <h2 id="endpoints-PUTapi-user">Update user profile data</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost:8000/api/user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"ygagqehouat\",
+    \"nationality\": \"lerpmjsiow\",
+    \"dob\": \"2022-02-07T16:33:13\",
+    \"gender\": \"\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "ygagqehouat",
+    "nationality": "lerpmjsiow",
+    "dob": "2022-02-07T16:33:13",
+    "gender": ""
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-user">
+</span>
+<span id="execution-results-PUTapi-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-user"></code></pre>
+</span>
+<span id="execution-error-PUTapi-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-user"></code></pre>
+</span>
+<form id="form-PUTapi-user" data-method="PUT"
+      data-path="api/user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-user"
+                    onclick="tryItOut('PUTapi-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-user"
+                    onclick="cancelTryOut('PUTapi-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-user" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/user</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="PUTapi-user"
+               value="ygagqehouat"
+               data-component="body" hidden>
+    <br>
+<p>Must not be greater than 50 characters.</p>
+        </p>
+                <p>
+            <b><code>nationality</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="nationality"
+               data-endpoint="PUTapi-user"
+               value="lerpmjsiow"
+               data-component="body" hidden>
+    <br>
+<p>Must not be greater than 50 characters.</p>
+        </p>
+                <p>
+            <b><code>dob</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="dob"
+               data-endpoint="PUTapi-user"
+               value="2022-02-07T16:33:13"
+               data-component="body" hidden>
+    <br>
+<p>Must be a valid date.</p>
+        </p>
+                <p>
+            <b><code>gender</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="gender"
+               data-endpoint="PUTapi-user"
+               value=""
+               data-component="body" hidden>
+    <br>
+<p>Must be between 0 and 1 characters.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-GETapi-survey-start">Return first queston from survey</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-survey-start">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/test" \
+    --get "http://localhost:8000/api/survey/start" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/test"
+    "http://localhost:8000/api/survey/start"
 );
 
 const headers = {
@@ -690,9 +922,9 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-test">
+<span id="example-responses-GETapi-survey-start">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -700,56 +932,143 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;success&quot;: true
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-test" hidden>
+<span id="execution-results-GETapi-survey-start" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-test"></span>:
+                id="execution-response-status-GETapi-survey-start"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-test"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-survey-start"></code></pre>
 </span>
-<span id="execution-error-GETapi-test" hidden>
+<span id="execution-error-GETapi-survey-start" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-test"></code></pre>
+    <pre><code id="execution-error-message-GETapi-survey-start"></code></pre>
 </span>
-<form id="form-GETapi-test" data-method="GET"
-      data-path="api/test"
+<form id="form-GETapi-survey-start" data-method="GET"
+      data-path="api/survey/start"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-test', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-survey-start', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-test"
-                    onclick="tryItOut('GETapi-test');">Try it out ⚡
+                    id="btn-tryout-GETapi-survey-start"
+                    onclick="tryItOut('GETapi-survey-start');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-test"
-                    onclick="cancelTryOut('GETapi-test');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-survey-start"
+                    onclick="cancelTryOut('GETapi-survey-start');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-test" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-survey-start" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/test</code></b>
+            <b><code>api/survey/start</code></b>
         </p>
+                    </form>
+
+            <h2 id="endpoints-POSTapi-survey-response--option-">Save user&#039;s response to question and return next question</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-survey-response--option-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/survey/response/6" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/survey/response/6"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-survey-response--option-">
+</span>
+<span id="execution-results-POSTapi-survey-response--option-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-survey-response--option-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-survey-response--option-"></code></pre>
+</span>
+<span id="execution-error-POSTapi-survey-response--option-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-survey-response--option-"></code></pre>
+</span>
+<form id="form-POSTapi-survey-response--option-" data-method="POST"
+      data-path="api/survey/response/{option}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-survey-response--option-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-survey-response--option-"
+                    onclick="tryItOut('POSTapi-survey-response--option-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-survey-response--option-"
+                    onclick="cancelTryOut('POSTapi-survey-response--option-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-survey-response--option-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/survey/response/{option}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>option</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="option"
+               data-endpoint="POSTapi-survey-response--option-"
+               value="6"
+               data-component="url" hidden>
+    <br>
+
+            </p>
                     </form>
 
     

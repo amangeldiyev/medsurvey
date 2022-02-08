@@ -10,6 +10,20 @@ use Illuminate\Http\Request;
 class SurveyController extends Controller
 {
     /**
+     * Get survey with questions and options
+     * 
+     * @param Survey $survey
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(Survey $survey)
+    {
+        return response()->json([
+            'success' => true,
+            'survey' => $survey->load('questions.options')
+        ]);
+    }
+
+    /**
      * Return first queston from survey
      *
      * @return \Illuminate\Http\JsonResponse
