@@ -19,6 +19,9 @@ class PasswordResetController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Illuminate\Validation\ValidationException
+     *
+     * @bodyParam email string required Email address
+     * @unauthenticated
      */
     public function sendResetLink(Request $request)
     {
@@ -46,6 +49,10 @@ class PasswordResetController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Illuminate\Validation\ValidationException
+     *
+     * @bodyParam password string required Must be between 8 and 50 characters.
+     * @bodyParam password_confirmation string required Must match 'password' field
+     * @unauthenticated
      */
     public function store(PasswordResetRequest $request)
     {

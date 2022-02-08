@@ -20,21 +20,21 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: rblick@example.net
+        example: gislason.berenice@example.org
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: ea
+        example: inventore
         type: string
         custom: []
       device_name:
         name: device_name
         description: ''
         required: true
-        example: harum
+        example: molestiae
         type: string
         custom: []
     responses: []
@@ -58,21 +58,28 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: dmitchell@example.com
+        example: nostrum
         type: string
         custom: []
       password:
         name: password
         description: 'Must be between 8 and 50 characters.'
         required: true
-        example: llgrkthzdxrdnpulbbtqrnjv
+        example: officia
         type: string
         custom: []
       device_name:
         name: device_name
-        description: ''
+        description: 'Name of device. Ex: ''iphone'', ''tablet'', etc.'
         required: true
-        example: eaque
+        example: enim
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Must match ''password'' field'
+        required: true
+        example: consequuntur
         type: string
         custom: []
     responses: []
@@ -91,49 +98,14 @@ endpoints:
       Accept: application/json
     urlParameters: []
     queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: api/user
-    metadata:
-      title: 'Return user data'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: api/logout
-    metadata:
-      title: 'Handle an incoming logout request'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Email address'
+        required: true
+        example: id
+        type: string
+        custom: []
     responses: []
     responseFields: []
   -
@@ -155,24 +127,57 @@ endpoints:
         name: code
         description: ''
         required: true
-        example: suscipit
+        example: beatae
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: frank07@example.org
+        example: ubecker@example.net
         type: string
         custom: []
       password:
         name: password
-        description: ''
+        description: 'Must be between 8 and 50 characters.'
         required: true
-        example: dolore
+        example: nulla
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Must match ''password'' field'
+        required: true
+        example: ullam
         type: string
         custom: []
     responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user
+    metadata:
+      title: 'Return user data'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
   -
     httpMethods:
@@ -181,9 +186,10 @@ endpoints:
     metadata:
       title: 'Update user profile data'
       description: ''
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -193,21 +199,21 @@ endpoints:
         name: name
         description: 'Must not be greater than 50 characters.'
         required: true
-        example: ygagqehouat
+        example: qvzwnonxzeaszfsbbflpbgodfzpkjykoaj
         type: string
         custom: []
       nationality:
         name: nationality
         description: 'Must not be greater than 50 characters.'
         required: true
-        example: lerpmjsiow
+        example: ekvzarq
         type: string
         custom: []
       dob:
         name: dob
         description: 'Must be a valid date.'
         required: true
-        example: '2022-02-07T16:33:13'
+        example: '2022-02-08T18:27:49'
         type: string
         custom: []
       gender:
@@ -226,12 +232,46 @@ endpoints:
     metadata:
       title: 'Return first queston from survey'
       description: ''
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/survey/{survey}'
+    metadata:
+      title: 'Get survey with questions and options'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      survey:
+        name: survey
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
     queryParameters: []
     bodyParameters: []
     responses:
@@ -251,9 +291,10 @@ endpoints:
     metadata:
       title: 'Save user''s response to question and return next question'
       description: ''
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -261,9 +302,34 @@ endpoints:
         name: option
         description: ''
         required: true
-        example: 6
+        example: 2
         type: integer
         custom: []
+    queryParameters: []
+    bodyParameters:
+      value:
+        name: value
+        description: 'Max 250 chars.'
+        required: false
+        example: voluptatem
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      title: 'Handle an incoming logout request'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
     queryParameters: []
     bodyParameters: []
     responses: []

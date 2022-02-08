@@ -17,6 +17,8 @@ class LoginController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Illuminate\Validation\ValidationException
+     *
+     * @unauthenticated
      */
     public function login(LoginRequest $request)
     {

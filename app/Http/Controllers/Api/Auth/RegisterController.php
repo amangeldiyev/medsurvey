@@ -13,6 +13,12 @@ class RegisterController extends Controller
      *
      * @param RegistrationRequest $request
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @bodyParam email string required Must be a valid email address.
+     * @bodyParam password string required Must be between 8 and 50 characters.
+     * @bodyParam password_confirmation string required Must match 'password' field
+     * @bodyParam device_name string required Name of device. Ex: 'iphone', 'tablet', etc.
+     * @unauthenticated
      */
     public function register(RegistrationRequest $request)
     {

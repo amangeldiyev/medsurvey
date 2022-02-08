@@ -11,7 +11,7 @@ class SurveyController extends Controller
 {
     /**
      * Get survey with questions and options
-     * 
+     *
      * @param Survey $survey
      * @return \Illuminate\Http\JsonResponse
      */
@@ -49,6 +49,8 @@ class SurveyController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param Option $option
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @bodyParam value string Max 250 chars.
      */
     public function storeUserResponse(Request $request, Option $option)
     {
