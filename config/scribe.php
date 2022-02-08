@@ -170,7 +170,7 @@ return [
         /*
          * Middleware to attach to the docs endpoint (if `add_routes` is true).
          */
-        'middleware' => [],
+        'middleware' => ['auth.basic'],
     ],
 
     'try_it_out' => [
