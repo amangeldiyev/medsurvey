@@ -29,8 +29,8 @@ Route::group(['middleware' => 'auth:sanctum'], function ($route) {
     $route->put('/user', [ProfileController::class, 'store']);
 
     $route->get('/survey/start', [SurveyController::class, 'start']);
-    $route->get('/survey/{survey}', [SurveyController::class, 'show']);
-    $route->post('/survey/response/{option}', [SurveyController::class, 'storeUserResponse']);
+    $route->get('/survey/results', [SurveyController::class, 'result']);
+    $route->post('/survey', [SurveyController::class, 'store']);
     
     $route->post('/logout', [LogoutController::class, 'logout']);
 });

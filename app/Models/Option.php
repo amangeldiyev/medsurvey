@@ -22,8 +22,8 @@ class Option extends Model
      *
      * @return \App\Models\Question
      */
-    public function subQuestion()
+    public function subQuestions()
     {
-        return $this->hasOne(Question::class, 'option_id');
+        return $this->hasMany(Question::class, 'option_id');
     }
 }

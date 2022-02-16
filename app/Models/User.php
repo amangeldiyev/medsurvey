@@ -51,7 +51,7 @@ class User extends \TCG\Voyager\Models\User
      */
     public function responses()
     {
-        return $this->belongsToMany(Option::class, 'user_responses', 'user_id', 'option_id');
+        return $this->belongsToMany(Option::class, 'user_responses', 'user_id', 'option_id')->withPivot('value');
     }
 
     /**
