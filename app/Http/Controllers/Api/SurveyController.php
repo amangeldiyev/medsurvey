@@ -25,7 +25,7 @@ class SurveyController extends Controller
     }
 
     /**
-     * Return first queston from survey
+     * Return survey questions with options
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -33,14 +33,9 @@ class SurveyController extends Controller
     {
         $survey = Survey::first();
 
-        $question = $survey->questions()
-            ->orderBy('order')
-            ->with('options')
-            ->first();
-
         return response()->json([
             'success' => true,
-            'question' => $question
+            'survey' => $survey->load('questions.options')
         ]);
     }
 
