@@ -7,6 +7,7 @@
 3. Run commands: 
 
 ```
+sudo chmod o+w storage/ -R
 docker-compose up -d --build
 docker-compose exec php php artisan key:generate
 docker-compose exec php php artisan migrate
