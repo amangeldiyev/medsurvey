@@ -1,0 +1,336 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      title: 'Handle an incoming login request'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: gislason.berenice@example.org
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: inventore
+        type: string
+        custom: []
+      device_name:
+        name: device_name
+        description: ''
+        required: true
+        example: molestiae
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      title: 'Handle an incoming registration request'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: nostrum
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be between 8 and 50 characters.'
+        required: true
+        example: officia
+        type: string
+        custom: []
+      device_name:
+        name: device_name
+        description: 'Name of device. Ex: ''iphone'', ''tablet'', etc.'
+        required: true
+        example: enim
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Must match ''password'' field'
+        required: true
+        example: consequuntur
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/forgot-password
+    metadata:
+      title: 'Handle an incoming password reset link request.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Email address'
+        required: true
+        example: id
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/reset-password
+    metadata:
+      title: 'Handle an incoming new password request.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      code:
+        name: code
+        description: ''
+        required: true
+        example: beatae
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: ubecker@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be between 8 and 50 characters.'
+        required: true
+        example: nulla
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Must match ''password'' field'
+        required: true
+        example: ullam
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user
+    metadata:
+      title: 'Return user data'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: api/user
+    metadata:
+      title: 'Update user profile data'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: qvzwnonxzeaszfsbbflpbgodfzpkjykoaj
+        type: string
+        custom: []
+      nationality:
+        name: nationality
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: ekvzarq
+        type: string
+        custom: []
+      dob:
+        name: dob
+        description: 'Must be a valid date.'
+        required: true
+        example: '2022-02-08T18:27:49'
+        type: string
+        custom: []
+      gender:
+        name: gender
+        description: 'Must be between 0 and 1 characters.'
+        required: true
+        example: ''
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/survey/start
+    metadata:
+      title: 'Return first queston from survey'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/survey/{survey}'
+    metadata:
+      title: 'Get survey with questions and options'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      survey:
+        name: survey
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/survey/response/{option}'
+    metadata:
+      title: 'Save user''s response to question and return next question'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      option:
+        name: option
+        description: ''
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      value:
+        name: value
+        description: 'Max 250 chars.'
+        required: false
+        example: voluptatem
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      title: 'Handle an incoming logout request'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
